@@ -41,7 +41,7 @@ body {
 }
 
 button {
-  background-color: #d84a38;
+  background-color: #0000ff;
   border: none;
   border-radius: 2px;
   color: white;
@@ -52,7 +52,7 @@ button {
 }
 
 button:active {
-  background-color: #cf402f;
+  background-color: #0000ff;
 }
 
 button:hover {
@@ -264,3 +264,10 @@ ul {
   }
 }
 
+
+.gallery {
+  margin: 10px;
+}
+.gallery img {
+  margin-left: 16px;
+}
