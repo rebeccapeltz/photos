@@ -40,7 +40,9 @@ const snapshotButton = document.querySelector('#snapshot');
 
 const constraints = {
   audio: false,
-  video: true
+  video: {
+    exact: 'environment'
+  }
 };
 
 function handleSuccess(stream) {
