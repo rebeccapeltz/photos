@@ -271,3 +271,8 @@ ul {
 .gallery img {
   margin-left: 16px;
 }
+.upload-form {
+  width: 50%;
+  display: flex;
+  flex-direction: column;
+}

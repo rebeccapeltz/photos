@@ -41,7 +41,6 @@ const snapshotButton = document.querySelector('#snapshot');
 const constraints = {
   audio: false,
   video: {facingMode:'environment'}
-
 };
 
 function handleSuccess(stream) {
