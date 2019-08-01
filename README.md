@@ -1,15 +1,15 @@
-   # Photos
 
-   <a href="https://github.com/webrtc/samples/tree/gh-pages/src/content/getusermedia/canvas"
-       title="View source for this page on GitHub" id="viewSource">View source on GitHub</a>
-
-```JavaScript
-const cloudName = 'picturecloud7';
-const unsignedUploadPreset = 'bp_test_1';
-```
-
-# HTML5 upload (xhr) to Cloudinary
- _A Pen created at CodePen.io. Original URL: [https://codepen.io/team/Cloudinary/pen/QgpyOK](https://codepen.io/team/Cloudinary/pen/QgpyOK).
+# Photos
+Take a snapshot and download to device or upload to cloudinary.  You need a [cloudinary account](https://cloudinary.com/users/register/free) and [cloudinary preset](https://support.cloudinary.com/hc/en-us/articles/360004967272-Upload-Preset-Configuration) to upload to your own account.
 
 
-https://res.cloudinary.com/picturecloud7/image/upload/v1564440707/bp_test/kosncafik1qzdckwgbbe.jpg
+## Adapted from
+   * <a href="https://github.com/webrtc/samples/tree/gh-pages/src/content/getusermedia/canvas"
+      alt="webrtc link" title="View source for this page on GitHub" id="viewSource">WEB RTC on GitHub</a>
+
+    * <a href="https://codepen.io/team/Cloudinary/pen/QgpyOK" alt="codepen link" 
+    title="cloudinary codepen">Cloudinary codepen example</a>
+
+
+
+

@@ -7,47 +7,58 @@
  *  tree.
 -->
 <html>
+
 <head>
 
-    <meta charset="utf-8">
-    <meta name="description" content="WebRTC code samples">
-    <meta name="viewport" content="width=device-width, user-scalable=yes, initial-scale=1, maximum-scale=1">
-    <meta itemprop="description" content="Client-side WebRTC code samples">
-    <meta itemprop="image" content="../../../images/webrtc-icon-192x192.png">
-    <meta itemprop="name" content="WebRTC code samples">
-    <meta name="mobile-web-app-capable" content="yes">
-    <meta id="theme-color" name="theme-color" content="#ffffff">
+  <meta charset="utf-8">
+  <meta name="description" content="WebRTC code samples">
+  <meta name="viewport" content="width=device-width, user-scalable=yes, initial-scale=1, maximum-scale=1">
+  <meta itemprop="description" content="Client-side WebRTC code samples">
+  <meta itemprop="image" content="../../../images/webrtc-icon-192x192.png">
+  <meta itemprop="name" content="WebRTC code samples">
+  <meta name="mobile-web-app-capable" content="yes">
+  <meta id="theme-color" name="theme-color" content="#ffffff">
 
-    <base target="_blank">
+  <base target="_blank">
 
-    <title>Photos</title>
+  <title>Photos</title>
 
-    <link href="//fonts.googleapis.com/css?family=Roboto:300,400,500,700" rel="stylesheet" type="text/css">
-    <link rel="stylesheet" href="./css/main.css">
+  <link href="//fonts.googleapis.com/css?family=Roboto:300,400,500,700" rel="stylesheet" type="text/css">
+  <link rel="stylesheet" href="./css/main.css">
 
 </head>
 
 <body>
-
-<div id="container">
+  <h1>Photos</h1>
+  <h2>You can take pictures and optionally upload</h2>
+  <h3>
+    What happens if you click on upload?
+  </h3>
+  <p>If you click on upload with inputs provided, you're uploading your photo to a cloudinary account that I own. You can
+    create your own cloudinary account and preset if you want to save the picture to an account you own.</p>
+  <p>You can download to your local device using the download button.</p>
+  <div id="container">
 
     <video playsinline autoplay></video>
     <button id="snapshot">Take snapshot</button>
     <canvas></canvas>
+    <button id="download">Download</button>
     <form id="upload-form" class="upload-form">
-      <input type="text" name="cloud-name" value="" placeholder="Enter cloud name">
-      <input type="text" name="preset" value="" placeholder="Enter upload preset">
+      <input type="text" name="cloud-name" value="picturecloud7" placeholder="Enter cloud name">
+      <input type="text" name="preset" value="bp_test_1" placeholder="Enter upload preset">
       <button type="submit">Upload</button>
     </form>
     <div id="gallery" />
-    <a href="https://github.com/rebeccapeltz/photos" title="View source for this page on GitHub" id="viewSource">View source on GitHub</a>
+    <a href="https://github.com/rebeccapeltz/photos" title="View source for this page on GitHub" id="viewSource">View
+      source on GitHub</a>
 
-</div>
+  </div>
 
 
-<script src="https://webrtc.github.io/adapter/adapter-latest.js"></script>
-<script src="js/upload.js" async></script>
-<script src="js/main.js" async></script>
+  <script src="https://webrtc.github.io/adapter/adapter-latest.js"></script>
+  <script src="js/upload.js" async></script>
+  <script src="js/main.js" async></script>
 
 </body>
+
 </html>
