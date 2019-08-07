@@ -34,7 +34,9 @@ snapshotButton.addEventListener("click", event => {
 const stopStreamButton = document.querySelector('#stop-stream');
 stopStreamButton.addEventListener("click",event=>{
   video.pause()
-  // localMediaStream.stop()
+  window.stream.getTracks().forEach(track => {
+    track.stop();
+  });
 })
 document.addEventListener("submit", event => {
   event.preventDefault()
@@ -81,5 +83,24 @@ navigator.mediaDevices.getUserMedia(constraints).then(stream=>{
 }).catch(error =>{
   handleError(error)
 });
+
+function getStream() {
+  if (window.stream) {
+    window.stream.getTracks().forEach(track => {
+      track.stop();
+    });
+  }
+  const videoSource = videoSelect.value;
+  const constraints = {
+    video: {deviceId: videoSource ? {exact: videoSource} : undefined}
+  };
+  // return navigator.mediaDevices.getUserMedia(constraints).
+  //   then(gotStream).catch(handleError);
+  navigator.mediaDevices.getUserMedia(constraints).then(stream=>{
+    handleSuccess(stream)
+  }).catch(error =>{
+    handleError(error)
+  });
+}
 
   
