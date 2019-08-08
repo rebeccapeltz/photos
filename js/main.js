@@ -49,12 +49,12 @@ document.addEventListener("submit", event => {
 // })
 
 
-const constraints = {
-  audio: false,
-  video: {
-    facingMode: 'environment'
-  }
-};
+// const constraints = {
+//   audio: false,
+//   video: {
+//     facingMode: 'environment'
+//   }
+// };
 
 function handleSuccess(stream) {
   localMediaStream = stream
@@ -78,11 +78,12 @@ function handleError(error) {
   console.log('navigator.MediaDevices.getUserMedia error: ', error.message, error.name);
 }
 
-navigator.mediaDevices.getUserMedia(constraints).then(stream=>{
-  handleSuccess(stream)
-}).catch(error =>{
-  handleError(error)
-});
+// navigator.mediaDevices.getUserMedia(constraints).then(stream=>{
+//   handleSuccess(stream)
+// }).catch(error =>{
+//   handleError(error)
+// });
+
 
 function getStream() {
   if (window.stream) {
@@ -91,16 +92,19 @@ function getStream() {
     });
   }
   const videoSource = videoSelect.value;
+  alert("videoSource",videoSource)
+  
+  
   const constraints = {
     video: {deviceId: videoSource ? {exact: videoSource} : undefined}
   };
-  // return navigator.mediaDevices.getUserMedia(constraints).
-  //   then(gotStream).catch(handleError);
+ 
   navigator.mediaDevices.getUserMedia(constraints).then(stream=>{
     handleSuccess(stream)
   }).catch(error =>{
     handleError(error)
   });
 }
+getStream()
 
   
