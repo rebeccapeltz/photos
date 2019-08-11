@@ -37,7 +37,7 @@ body {
   font-weight: 300;
   margin: 0;
   padding: 1em;
-  word-break: break-word;
+  /* word-break: break-word; */
 }
 
 button {
