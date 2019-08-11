@@ -26,6 +26,10 @@ stopBtn.addEventListener("click", event=>{
   camera.turnAllDevicesOff()
 } )
 
+select.addEventListener("change", event=>{
+  camera.turnOnDevice()
+})
+
 document.addEventListener("submit", event => {
   event.preventDefault()
   let cloudName = document.querySelector('input[name=cloud-name]').value;

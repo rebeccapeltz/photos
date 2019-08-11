@@ -1,5 +1,5 @@
 class Camera {
-  constructor(videoEl, canvasEl, deviceSelectEl,galleryEl) {
+  constructor(videoEl, canvasEl, deviceSelectEl, galleryEl) {
     this.currentImage = null
     this.cloudName = null
     this.preset = null
@@ -11,8 +11,39 @@ class Camera {
     this.gallery = galleryEl
     this.fileData = null
     this.constraints = null
-    this.currentStream= null
+    this.currentStream = null
+    this.devices = []
+
+    //load only video devices
+    navigator.mediaDevices.enumerateDevices()
+      .then(mediaDevices => {
+        mediaDevices.forEach(mediaDevice => {
+          if (mediaDevice.kind === 'videoinput') {
+            this.devices.push(mediaDevice)
+          }
+        })
+        this.populateDeviceSelect()
+      })
+      .catch(error => {
+        console.error("Camera init:",error);
+      });
   }
+
+  //clear and create options for device select
+  populateDeviceSelect() {
+    this.select.innerHTML = '';
+    this.select.appendChild(document.createElement('option'));
+    let count = 1;
+    for (let device of this.devices) {
+      const option = document.createElement('option');
+      option.value = device.deviceId;
+      const label = device.label || `Camera ${count++}`;
+      const textNode = document.createTextNode(label);
+      option.appendChild(textNode);
+      this.select.appendChild(option);
+    }
+  }
+
   setCloudName(cloudName) {
     this.cloudName = cloudName
   }
@@ -27,7 +58,7 @@ class Camera {
       videoConstraints.facingMode = 'environment';
     } else {
       videoConstraints.deviceId = {
-        exact: select.value
+        exact: this.select.value
       };
     }
     this.constraints = {
@@ -47,28 +78,28 @@ class Camera {
         window.stream = stream;
         this.video.srcObject = stream;
         this.currentStream = stream;
-        return navigator.mediaDevices.enumerateDevices();
+        // return navigator.mediaDevices.enumerateDevices();
       })
-      .then(mediaDevices => {
-        this.select.innerHTML = '';
-        this.select.appendChild(document.createElement('option'));
-        let count = 1;
-        mediaDevices.forEach(mediaDevice => {
-          if (mediaDevice.kind === 'videoinput') {
-            const option = document.createElement('option');
-            option.value = mediaDevice.deviceId;
-            const label = mediaDevice.label || `Camera ${count++}`;
-            const textNode = document.createTextNode(label);
-            option.appendChild(textNode);
-            select.appendChild(option);
-          }
-        })
-      })
+      // .then(mediaDevices => {
+      //   this.select.innerHTML = '';
+      //   this.select.appendChild(document.createElement('option'));
+      //   let count = 1;
+      //   mediaDevices.forEach(mediaDevice => {
+      //     if (mediaDevice.kind === 'videoinput') {
+      //       const option = document.createElement('option');
+      //       option.value = mediaDevice.deviceId;
+      //       const label = mediaDevice.label || `Camera ${count++}`;
+      //       const textNode = document.createTextNode(label);
+      //       option.appendChild(textNode);
+      //       select.appendChild(option);
+      //     }
+      //   })
+      // })
       .catch(error => {
         console.error(error);
       });
   }
-  
+
   turnAllDevicesOff() {
     console.log("camera off")
     this.video.pause()
@@ -108,7 +139,7 @@ class Camera {
     xhr.open('POST', url, true);
     xhr.setRequestHeader('X-Requested-With', 'XMLHttpRequest');
 
-    xhr.onreadystatechange = event =>{
+    xhr.onreadystatechange = event => {
       if (xhr.readyState == 4 && xhr.status == 200) {
         // File uploaded successfully
         var response = JSON.parse(xhr.responseText);
