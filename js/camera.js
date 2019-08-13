@@ -16,10 +16,10 @@ class Camera {
 
     //load only video devices
     navigator.mediaDevices.enumerateDevices()
-      .then(mediaDevices => {
-        mediaDevices.forEach(mediaDevice => {
+      .then(async mediaDevices => {
+        await mediaDevices.forEach(async mediaDevice => {
           if (mediaDevice.kind === "videoinput") {
-            this.devices.push(mediaDevice)
+            await this.devices.push(mediaDevice)
           }
         })
         this.populateDeviceSelect()
