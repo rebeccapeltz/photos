@@ -5,7 +5,7 @@
  *  that can be found in the LICENSE file in the root of the source
  *  tree.
  */
- .hidden {
+.hidden {
   display: none;
 }
 
@@ -22,6 +22,7 @@
 }
 
 @media screen and (min-width: 1000px) {
+
   /* hack! to detect non-touch devices */
   div#links a {
     line-height: 0.8em;
@@ -40,7 +41,7 @@ body {
   /* word-break: break-word; */
 }
 
-button {
+/* button {
   background-color: #0000ff;
   border: none;
   border-radius: 2px;
@@ -49,9 +50,9 @@ button {
   font-size: 0.8em;
   margin: 0 0 1em 0;
   padding: 0.5em 0.7em 0.6em 0.7em;
-}
+} */
 
-button:active {
+/* button:active {
   background-color: #0000ff;
 }
 
@@ -61,16 +62,16 @@ button:hover {
 
 button[disabled] {
   color: #ccc;
-}
+} */
 
-button[disabled]:hover {
+/* button[disabled]:hover {
   background-color: #d84a38;
-}
+} */
 
 canvas {
   background-color: #ccc;
-  max-width: 75%;
-  width: 75%;
+  max-width: 100%;
+  width: 100%;
 }
 
 code {
@@ -78,11 +79,17 @@ code {
   font-weight: 400;
 }
 
-div#container {
-  margin: 0 auto 0 auto;
-  max-width: 60em;
-  padding: 1em 1.5em 1.3em 1.5em;
+@media screen and (min-width: 550px) {
+  div#container {
+    margin: 1rem auto;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-gap: 1rem;
+    /* max-width: 60em; */
+    /* padding: 1em 1.5em 1.3em 1.5em; */
+  }
 }
+
 
 div#links {
   padding: 0.5em 0 0 0;
@@ -227,16 +234,18 @@ textarea {
 video {
   background: #222;
   margin: 0 0 20px 0;
-  --width: 75%;
-  width: var(--width);
-  height: calc(var(--width) * 0.75);
+  --width: 100%;
+  /* width: var(--width); */
+  /* height: calc(var(--width) * 0.75); */
+  width: 100%;
+  height: 100%;
 }
 
 ul {
   margin: 0 0 0.5em 0;
 }
 
-@media screen and (max-width: 650px) {
+/* @media screen and (max-width: 650px) {
   .highlight {
     font-size: 1em;
     margin: 0 0 20px 0;
@@ -246,9 +255,9 @@ ul {
   h1 {
     font-size: 24px;
   }
-}
+} */
 
-@media screen and (max-width: 550px) {
+/* @media screen and (max-width: 550px) {
   button:active {
     background-color: darkRed;
   }
@@ -256,26 +265,38 @@ ul {
   h1 {
     font-size: 22px;
   }
-}
+} */
 
-@media screen and (max-width: 450px) {
+/* @media screen and (max-width: 450px) {
   h1 {
     font-size: 20px;
   }
-}
+} */
 
 
 .gallery {
   margin: 10px;
 }
+
 .gallery img {
   margin-left: 16px;
 }
+
 .upload-form {
   width: 50%;
   display: flex;
   flex-direction: column;
 }
-button,select {
-  display: block;
+
+/* .button-group {
+  display: flex;
 }
+
+.button-group button {
+  margin: 5px;
+  height: 2rem;
+  width: 7rem;
+  background-color: black;
+  color: white;
+  font-size: 1rem;
+} */
