@@ -25,16 +25,18 @@ class Camera {
         this.populateDeviceSelect()
       })
       .catch(error => {
-        console.error("Camera init:",error);
+        console.error("Camera init:", error);
       });
   }
 
   //clear and create options for device select
   populateDeviceSelect() {
     this.select.innerHTML = '';
-    // this.select.appendChild(document.createElement('option'));
-    // let count = 1;
-    let count = 0;
+    let firstOption = document.createElement('option');
+    firstOption.label = "Select Camera"
+    this.select.appendChild(firstOption);
+    let count = 1;
+   
     for (let device of this.devices) {
       const option = document.createElement('option');
       option.value = device.deviceId;
@@ -55,6 +57,7 @@ class Camera {
   setConstraints() {
     console.log("set constraints")
     const videoConstraints = {};
+    // alert(this.select.value, this.select.label)
     if (this.select.value === '') {
       videoConstraints.facingMode = 'environment';
     } else {
@@ -110,7 +113,7 @@ class Camera {
       });
     }
     this.video.srcObject = null;
-    this.video.removeAttribute('src'); 
+    this.video.removeAttribute('src');
     this.video.load();
     this.canvas.getContext('2d').clearRect(0, 0, canvas.width, canvas.height);
 
