@@ -32,8 +32,9 @@ class Camera {
   //clear and create options for device select
   populateDeviceSelect() {
     this.select.innerHTML = '';
-    this.select.appendChild(document.createElement('option'));
-    let count = 1;
+    // this.select.appendChild(document.createElement('option'));
+    // let count = 1;
+    let count = 0;
     for (let device of this.devices) {
       const option = document.createElement('option');
       option.value = device.deviceId;
