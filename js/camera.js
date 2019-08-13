@@ -18,7 +18,7 @@ class Camera {
     navigator.mediaDevices.enumerateDevices()
       .then(mediaDevices => {
         mediaDevices.forEach(mediaDevice => {
-          if (mediaDevice.kind === 'videoinput') {
+          if (mediaDevice.kind === "videoinput") {
             this.devices.push(mediaDevice)
           }
         })
@@ -108,6 +108,11 @@ class Camera {
         track.stop();
       });
     }
+    this.video.srcObject = null;
+    this.video.removeAttribute('src'); 
+    this.video.load();
+    this.canvas.getContext('2d').clearRect(0, 0, canvas.width, canvas.height);
+
   }
   snapshot() {
     console.log("snapshot")
