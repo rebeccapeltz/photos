@@ -6,16 +6,14 @@
   <meta charset="utf-8">
   <meta name="description" content="My Camera">
   <meta name="viewport" content="width=device-width, user-scalable=yes, initial-scale=1, maximum-scale=1">
-  <meta itemprop="description" content="My Web Camera">
-  <meta itemprop="name" content="My Web Camera">
   <meta name="mobile-web-app-capable" content="yes">
   <meta id="theme-color" name="theme-color" content="#ffffff">
 
   <base target="_blank">
 
   <title>Camera</title>
-<link href="./css/normalize.css" rel="stylesheet" type="text/css">
-<link href="./css/skeleton.css" rel="stylesheet" type="text/css">
+  <link href="./css/normalize.css" rel="stylesheet" type="text/css">
+  <link href="./css/skeleton.css" rel="stylesheet" type="text/css">
 
 
 
@@ -29,13 +27,17 @@
 
 
 
-  <div class="button-group">
+  <div class="action-group">
     <button id="start-stream">Start</button>
     <button id="stop-stream">Stop</button>
-    <button id="snapshot">snapshot</button> 
-  <button id="download">Download</button>
-    <div><select id="video-select"></select></div>
+    <button id="snapshot">Snapshot</button>
+    <button id="download">Download</button>
+    <select class="u-full-width" id="video-select"></select>
   </div>
+ 
+
+
+  
 
   <div id="container">
     <video playsinline autoplay></video>
@@ -43,8 +45,8 @@
   </div>
 
 
-  
- 
+
+
   <form id="upload-form" class="upload-form">
     <input type="text" name="cloud-name" value="picturecloud7" placeholder="Enter cloud name">
     <input type="text" name="preset" value="bp_test_1" placeholder="Enter upload preset">
