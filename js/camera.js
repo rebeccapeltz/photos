@@ -16,24 +16,28 @@ class Camera {
 
     //load only video devices
     navigator.mediaDevices.enumerateDevices()
-      .then(mediaDevices => {
-        mediaDevices.forEach(mediaDevice => {
-          if (mediaDevice.kind === 'videoinput') {
-            this.devices.push(mediaDevice)
+      .then(async mediaDevices => {
+        await mediaDevices.forEach(async mediaDevice => {
+          if (mediaDevice.kind === "videoinput") {
+            await this.devices.push(mediaDevice)
           }
         })
+        console.log("populate select")
         this.populateDeviceSelect()
       })
       .catch(error => {
-        console.error("Camera init:",error);
+        console.error("Camera init:", error);
       });
   }
 
   //clear and create options for device select
   populateDeviceSelect() {
     this.select.innerHTML = '';
-    this.select.appendChild(document.createElement('option'));
+    let firstOption = document.createElement('option');
+    firstOption.label = "Select Camera"
+    this.select.appendChild(firstOption);
     let count = 1;
+   
     for (let device of this.devices) {
       const option = document.createElement('option');
       option.value = device.deviceId;
@@ -42,6 +46,10 @@ class Camera {
       option.appendChild(textNode);
       this.select.appendChild(option);
     }
+    this.select.label = this.devices[0].label
+    this.select.value = this.devices[0].deviceId
+    camera.turnOnDevice()
+
   }
 
   setCloudName(cloudName) {
@@ -54,6 +62,9 @@ class Camera {
   setConstraints() {
     console.log("set constraints")
     const videoConstraints = {};
+    // alert(this.select.value, this.select.label)
+    console.log(this.select.value, this.select.label)
+
     if (this.select.value === '') {
       videoConstraints.facingMode = 'environment';
     } else {
@@ -93,6 +104,11 @@ class Camera {
         track.stop();
       });
     }
+    this.video.srcObject = null;
+    this.video.removeAttribute('src');
+    this.video.load();
+    this.canvas.getContext('2d').clearRect(0, 0, canvas.width, canvas.height);
+
   }
   snapshot() {
     console.log("snapshot")

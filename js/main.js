@@ -9,7 +9,6 @@ const video = document.querySelector("video")
 const canvas = document.querySelector("canvas")
 
 const camera = new Camera(video, canvas, select,gallery)
-camera.turnOnDevice()
 
 startBtn.addEventListener("click",event=>{
   camera.turnOnDevice()

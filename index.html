@@ -6,17 +6,15 @@
   <meta charset="utf-8">
   <meta name="description" content="My Camera">
   <meta name="viewport" content="width=device-width, user-scalable=yes, initial-scale=1, maximum-scale=1">
-  <meta itemprop="description" content="My Web Camera">
-  <meta itemprop="name" content="My Web Camera">
   <meta name="mobile-web-app-capable" content="yes">
   <meta id="theme-color" name="theme-color" content="#ffffff">
 
   <base target="_blank">
 
   <title>Camera</title>
+  <link href="./css/normalize.css" rel="stylesheet" type="text/css">
+  <link href="./css/skeleton.css" rel="stylesheet" type="text/css">
 
-  <!-- UIkit CSS -->
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/uikit/3.1.7/css/uikit.min.css" />
 
 
   <link href="//fonts.googleapis.com/css?family=Roboto:300,400,500,700" rel="stylesheet" type="text/css">
@@ -29,75 +27,38 @@
 
 
 
-  <div class="uk-margin" data-uk-margin>
-    <!-- <div class="uk-button-group"> -->
-    <div class="uk-grid-small">
-      <span class="uk-label uk-width-1-5">Start</span>
-      <span class="uk-label uk-width-1-5">Stop</span>
-      <span class="uk-label uk-width-1-5">Snapshot</span>
-      <span class="uk-label uk-width-1-5">Upload</span>
-      <span class="uk-label uk-width-1-5">Dnload</span>
-    </div>
-    <!-- <div>
-        <button class="uk-button uk-button-secondary uk-child-width-expand">Start</button>
-      </div>
-      <div>
-        <button class="uk-button uk-button-secondary uk-child-width-expand">Stop</button>
-      </div>
-      <div>
-        <button class="uk-button uk-button-secondary uk-child-width-expand">Snapshot</button>
-      </div>
-      <div>
-        <button class="uk-button uk-button-secondary uk-child-width-expand">Upload</button>
-      </div>
-      <div>
-        <button class="uk-button uk-button-secondary uk-child-width-expand">Download</button>
-      </div> -->
-    <!-- </div> -->
+  <div class="action-group">
+    <button id="start-stream">Start</button>
+    <button id="stop-stream">Stop</button>
+    <button id="snapshot">Snapshot</button>
+    <button id="download">Download</button>
+    <select class="u-full-width" id="video-select"></select>
   </div>
-
-  <!-- <div class="uk-margin">
-    <div uk-form-custom="target: > * > span:first-child">
-      <select>
-        <option value="">Please select...</option>
-        <option value="1">Option 01</option>
-        <option value="2">Option 02</option>
-        <option value="3">Option 03</option>
-        <option value="4">Option 04</option>
-      </select>
-      <button class="uk-button uk-button-default" type="button" tabindex="-1">
-        <span></span>
-        <span uk-icon="icon: chevron-down"></span>
-      </button>
-    </div>
-  </div> -->
+ 
 
 
-
+  
 
   <div id="container">
-
     <video playsinline autoplay></video>
-    <button id="snapshot">Take snapshot</button>
     <canvas></canvas>
-    <select id="video-select"></select>
-    <button id="download">Download</button>
-    <button id="stop-stream">Stop</button>
-    <button id="start-stream">Start</button>
-    <form id="upload-form" class="upload-form">
-      <input type="text" name="cloud-name" value="picturecloud7" placeholder="Enter cloud name">
-      <input type="text" name="preset" value="bp_test_1" placeholder="Enter upload preset">
-      <button type="submit">Upload</button>
-    </form>
-    <div id="gallery" />
-    <a href="https://github.com/rebeccapeltz/photos" title="View source for this page on GitHub" id="viewSource">View
-      source on GitHub</a>
-
   </div>
 
-  <!-- UIkit JS -->
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/uikit/3.1.7/js/uikit.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/uikit/3.1.7/js/uikit-icons.min.js"></script>
+
+
+
+  <form id="upload-form" class="upload-form">
+    <input type="text" name="cloud-name" value="picturecloud7" placeholder="Enter cloud name">
+    <input type="text" name="preset" value="bp_test_1" placeholder="Enter upload preset">
+    <button type="submit">Upload</button>
+  </form>
+  <div id="gallery" />
+  <a href="https://github.com/rebeccapeltz/photos" title="View source for this page on GitHub" id="viewSource">View
+    source on GitHub</a>
+
+
+
+
   <script src="https://webrtc.github.io/adapter/adapter-latest.js"></script>
   <script src="./js/camera.js" async></script>
   <script src="./js/main.js" async></script>
