@@ -80,21 +80,6 @@ class Camera {
         this.currentStream = stream;
         // return navigator.mediaDevices.enumerateDevices();
       })
-      // .then(mediaDevices => {
-      //   this.select.innerHTML = '';
-      //   this.select.appendChild(document.createElement('option'));
-      //   let count = 1;
-      //   mediaDevices.forEach(mediaDevice => {
-      //     if (mediaDevice.kind === 'videoinput') {
-      //       const option = document.createElement('option');
-      //       option.value = mediaDevice.deviceId;
-      //       const label = mediaDevice.label || `Camera ${count++}`;
-      //       const textNode = document.createTextNode(label);
-      //       option.appendChild(textNode);
-      //       select.appendChild(option);
-      //     }
-      //   })
-      // })
       .catch(error => {
         console.error(error);
       });
@@ -143,10 +128,6 @@ class Camera {
       if (xhr.readyState == 4 && xhr.status == 200) {
         // File uploaded successfully
         var response = JSON.parse(xhr.responseText);
-        // https://res.cloudinary.com/cloudName/image/upload/v1483481128/public_id.jpg
-
-        // https://res.cloudinary.com/picturecloud7/image/upload/v1564440707/bp_test/kosncafik1qzdckwgbbe.jpg
-
         var url = response.secure_url;
         // Create a thumbnail of the uploaded image, with 150px width
         var tokens = url.split('/');
